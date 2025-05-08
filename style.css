@@ -1,0 +1,108 @@
+* {
+  margin: 0;
+  padding: 0;
+  font-family: Arial;
+}
+
+header {
+  background-color: hsl(220, 80%, 60%);
+  padding: 2rem;
+  color: #fff;
+  display: flex;
+  justify-content: center;
+  margin-bottom: 4rem;
+  font-size: clamp(1.3rem, 3vw, 2rem);
+}
+
+.title {
+  flex-basis: 100%;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  margin-bottom: 4rem;
+}
+
+main {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.sliders-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+
+.daysInput {
+  display: inline-block;
+  margin-bottom: 2rem; 
+}
+
+.sleepInput {
+  display: inline-block;
+}
+
+#schedule {
+  height: 50vh;
+  width: 20vw;
+  border: solid 1px;
+  box-shadow: 4px 4px 10px hsl(0, 0%, 70%);
+  background-color: hsl(120, 50%, 60%);
+  margin-left: 2rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: stretch;
+}
+.block {
+  flex: 1;
+  background-color: hsl(120, 50%, 60%);
+  border: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+.block.sleep {
+  background-color: hsl(0, 50%, 60%);
+}
+
+.rationale-title {
+  flex-basis: 100%;
+  text-align: center;
+  margin-top: 4rem;
+  margin-bottom: 1rem;
+}
+
+.rationale {
+  margin-left: 3rem;
+  margin-right: 3rem;
+  line-height: 2rem;
+}
+
+footer {
+  background-color: #272750;
+  margin-top: 4rem;
+  color: #fff;
+  padding: 1.5rem;
+  text-align: center;
+  font-size: 1.15rem;
+}
+
+.link {
+  color: #fff;
+  text-decoration: none;
+}
+
+@media screen and (max-width: 720px) {
+  main {
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+
+  #schedule {
+    width: 70%;
+    margin-top: 2rem;
+  }
+}

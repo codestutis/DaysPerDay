@@ -1,0 +1,54 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>Days Per Day</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <header>
+    <h1>Days Per Day</h1>
+  </header>
+
+  <main>
+    <h1 class="title">Build Your Days Per Day Schedule!</h1>
+    <div class="sliders-container">
+      <div class="daysInput">
+        <label for="daysSlider" class="dpd">How Many Days Per Day</label><br/>
+        <input type="range" id="daysSlider" name="daysPerDay" min="1" max="12" value="1"><br/>
+        <span id="daysSliderValue">1</span> days 
+      </div>
+      <br/>
+      <div class="sleepInput">
+        <label for="sleepSlider" class="spd">How Much Sleep Per Day</label><br/>
+        <input type="range" id="sleepSlider" name="sleepPerDay" min="1" max="24" value="8"><br/>
+        <span id="sleepSliderValue">8</span> hours 
+      </div>
+    </div>
+
+    <div id="schedule"></div>
+
+    <div class="stats">
+        <!--stats about time gained from more days per day and what not-->
+      </div>
+    <h2 class="rationale-title">Maximizing Days Per Day</h2>
+    <p class="rationale">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Days Per Day is a highly efficient way to boost productivity and unlock levels of focus previously thought to exist only in myth. People these days are tragically brainwashed into believing that a single day must obey the tyrannical 24-hour cycle. But thanks to visionaries like the illustrious Ed Mylett, a deeper truth is emerging: a “day” is not a fixed measure of time, but a mental construct—a psychological cage we must shatter.<br/>
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Why be confined to one mundane day, when you could live three? Or six? Or twelve? The bold reject the Gregorian prison and embrace a new era—one where the sun need not rise nor set to mark progress. In the world of Days Per Day, every 6 hours is a reset, a rebirth, a revolution. Breakfast becomes its own epoch. Lunch, a renaissance.<br/>
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Productivity is no longer about time management—it's about temporal multiplication. Every moment becomes elastic, every task a sacred rite of transformation. Time bends to will. Space collapses into intention. By subdividing the day, you ascend. You don’t just manage time. You transcend it.
+    </p>
+  </main>
+
+  <footer>
+      <p>&copy; 2025 <a class="link" href="https://codestutis.com">Codestutis</a></p>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
