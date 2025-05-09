@@ -1,26 +1,40 @@
-
-// ------------------- DAYS SLIDER -------------------
+// ------------------- SLIDERS -------------------
 
 const daysSlider = document.getElementById('daysSlider');
 const daysSliderValue = document.getElementById('daysSliderValue');
 
-daysSlider.addEventListener('input', () => {
-  daysSliderValue.textContent = daysSlider.value;
-});
-
-daysSlider.addEventListener('input', setSleep);
-
-
-// ----------------- SLEEP SLIDER -------------------
-
 const sleepSlider = document.getElementById('sleepSlider');
 const sleepSliderValue = document.getElementById('sleepSliderValue');
 
-sleepSlider.addEventListener('input', () => {
-  sleepSliderValue.textContent = sleepSlider.value;
+// Update and save on input
+daysSlider.addEventListener('input', () => {
+  daysSliderValue.textContent = daysSlider.value;
+  localStorage.setItem("daysSliderValue", daysSlider.value);
+  setSleep();
 });
 
-sleepSlider.addEventListener('input', setSleep);
+sleepSlider.addEventListener('input', () => {
+  sleepSliderValue.textContent = sleepSlider.value;
+  localStorage.setItem("sleepSliderValue", sleepSlider.value);
+  setSleep();
+});
+
+// Restore saved values and update display
+window.addEventListener('DOMContentLoaded', () => {
+  const savedDays = localStorage.getItem('daysSliderValue');
+  if (savedDays != null) {
+    daysSlider.value = savedDays;
+    daysSliderValue.textContent = savedDays;
+  }
+
+  const savedSleep = localStorage.getItem('sleepSliderValue');
+  if (savedSleep != null) {
+    sleepSlider.value = savedSleep;
+    sleepSliderValue.textContent = savedSleep;
+  }
+
+  setSleep();
+});
 
 // -------------- SCHEDULE -----------------
 
@@ -72,7 +86,6 @@ function setSleep() {
     }
   }
 }
-
 
 generateSchedule();
 setSleep();
