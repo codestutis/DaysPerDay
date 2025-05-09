@@ -16,21 +16,31 @@
 
   <main>
     <h1 class="title">Build Your Days Per Day Schedule!</h1>
-    <div class="sliders-container">
-      <div class="daysInput">
-        <label for="daysSlider" class="dpd">How Many Days Per Day</label><br/>
-        <input type="range" id="daysSlider" name="daysPerDay" min="1" max="12" value="1"><br/>
-        <span id="daysSliderValue">1</span> days 
+    <div class="builder">
+      <div class="sliders-container">
+        <div class="daysInput">
+          <label for="daysSlider" class="dpd">How Many Days Per Day</label><br/>
+          <input type="range" id="daysSlider" name="daysPerDay" min="1" max="12" value="1"><br/>
+          <span id="daysSliderValue">1</span> days 
+        </div>
+        <br/>
+        <div class="sleepInput">
+          <label for="sleepSlider" class="spd">How Much Sleep Per Day</label><br/>
+          <input type="range" id="sleepSlider" name="sleepPerDay" min="0" max="24" value="8"><br/>
+          <span id="sleepSliderValue">8</span> hours 
+        </div>
       </div>
-      <br/>
-      <div class="sleepInput">
-        <label for="sleepSlider" class="spd">How Much Sleep Per Day</label><br/>
-        <input type="range" id="sleepSlider" name="sleepPerDay" min="0" max="24" value="8"><br/>
-        <span id="sleepSliderValue">8</span> hours 
+      <div class="schedule-container">
+        <div id="schedule"></div>
+        <div id="hours">
+          <div>00:00</div>
+          <div>06:00</div>
+          <div>12:00</div>
+          <div>18:00</div>
+          <div>24:00</div>
+        </div>
       </div>
     </div>
-
-    <div id="schedule"></div>
 
     <div class="stats">
         <!--stats about time gained from more days per day and what not-->

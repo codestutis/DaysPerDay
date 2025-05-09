@@ -24,7 +24,8 @@ header {
 
 main {
   display: flex;
-  flex-wrap: wrap;
+  flex-direction: column;
+  align-items: center;
   justify-content: center;
 }
 
@@ -43,6 +44,23 @@ main {
 
 .sleepInput {
   display: inline-block;
+}
+
+.schedule-container {
+  display: flex;
+}
+
+.builder {
+  display: flex;
+}
+
+#hours {
+  margin-left: 0.25rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 100%;
+  font-size: 0.75rem;
 }
 
 #schedule {
@@ -99,6 +117,26 @@ footer {
     flex-direction: column;
     align-items: center;
     justify-content: center;
+  }
+
+  .schedule-container {
+    margin: 0;
+    padding: 0;
+    width: 80vw;
+    align-items: center;
+  }
+
+  .builder {
+    flex-direction: column;
+  }
+
+  #hours {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 51vh;
+    margin-top: 2rem;
+    
   }
 
   #schedule {
