@@ -7,33 +7,26 @@ const sleepSlider = document.getElementById('sleepSlider');
 const sleepSliderValue = document.getElementById('sleepSliderValue');
 
 // Update and save on input
-daysSlider.addEventListener('input', () => {
-  daysSliderValue.textContent = daysSlider.value;
-  localStorage.setItem("daysSliderValue", daysSlider.value);
-  setSleep();
-});
+daysSlider.addEventListener('input', updateSchedule);
+sleepSlider.addEventListener('input', updateSchedule);
 
-sleepSlider.addEventListener('input', () => {
-  sleepSliderValue.textContent = sleepSlider.value;
-  localStorage.setItem("sleepSliderValue", sleepSlider.value);
+function updateSchedule() {
+  daysSliderValue.textContent = daysSlider.value;
+  sleepSliderValue.textContent = Number(sleepSlider.value).toFixed(2).replace(/\.00$/, '').replace(/0$/, '');
+  localStorage.setItem('daysSliderValue', daysSlider.value);
+  localStorage.setItem('sleepSliderValue', sleepSlider.value);
   setSleep();
-});
+}
 
 // Restore saved values and update display
 window.addEventListener('DOMContentLoaded', () => {
   const savedDays = localStorage.getItem('daysSliderValue');
-  if (savedDays != null) {
-    daysSlider.value = savedDays;
-    daysSliderValue.textContent = savedDays;
-  }
+  if (savedDays != null) daysSlider.value = savedDays;
 
   const savedSleep = localStorage.getItem('sleepSliderValue');
-  if (savedSleep != null) {
-    sleepSlider.value = savedSleep;
-    sleepSliderValue.textContent = savedSleep;
-  }
+  if (savedSleep != null) sleepSlider.value = savedSleep;
 
-  setSleep();
+  updateSchedule();
 });
 
 // -------------- SCHEDULE -----------------
@@ -41,13 +34,15 @@ window.addEventListener('DOMContentLoaded', () => {
 const schedule = document.getElementById('schedule');
 
 
-// make 24 divs inside the schedule element for each hour
+// Make one block for each 15-minute interval in the day.
 function generateSchedule() {
   schedule.innerHTML = '';
-  for (let i = 0; i < 24; i++) {
+  for (let i = 0; i < 96; i++) {
     const block = document.createElement('div');
     block.classList.add('block');
-    block.id = `${i}`;
+    block.dataset.slot = i;
+    const formatTime = slot => `${String(Math.floor(slot / 4)).padStart(2, '0')}:${String((slot % 4) * 15).padStart(2, '0')}`;
+    block.title = `${formatTime(i)}–${formatTime(i + 1)}`;
     schedule.appendChild(block);
   }
 }
@@ -58,31 +53,17 @@ function generateSchedule() {
 
 // make array of viable values and index that with slider value
 function setSleep() {
-  const blocks = document.querySelectorAll('.block');
-  blocks.forEach(block => block.classList.remove('sleep'));
+  const blocks = schedule.children;
+  const totalSlots = blocks.length;
+  const days = Number(daysSlider.value);
+  const sleepSlots = Number(sleepSlider.value) * 4;
 
-  // total sleep time per 24-hours
-  const sleepTotal = parseInt(sleepSlider.value);
-
-  // how many pseudo days per regular day
-  const daysPerDay = parseInt(daysSlider.value);
-
-  // sleep per pseudo day
-  const sleepPerDay = Math.round(sleepTotal / daysPerDay);
-
-  // hours per pseudo day
-  const hoursPerDay = Math.floor(24 / daysPerDay);
-
-  for (let d = 0; d < daysPerDay; d++) {
-    const dayStart = d * hoursPerDay;
-
-    // fill in the sleep time for each day
-    for (let i = 0; i < sleepPerDay; i++) {
-      const hourIndex = dayStart + i;
-      if (hourIndex < 24) {
-        const block = document.getElementById(`${hourIndex}`);
-        if (block) block.classList.add('sleep');
-      }
+  for (let day = 0; day < days; day++) {
+    const start = Math.ceil(day * totalSlots / days);
+    const end = Math.ceil((day + 1) * totalSlots / days);
+    const sleepInDay = Math.round(end * sleepSlots / totalSlots) - Math.round(start * sleepSlots / totalSlots);
+    for (let slot = start; slot < end; slot++) {
+      blocks[slot].classList.toggle('sleep', slot - start < sleepInDay);
     }
   }
 }

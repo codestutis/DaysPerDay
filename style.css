@@ -1,16 +1,22 @@
 * {
   margin: 0;
   padding: 0;
-  font-family: Arial;
+  box-sizing: border-box;
+  font-family: Arial, sans-serif;
+}
+
+body {
+  color: #172033;
+  background: #f5f7fb;
 }
 
 header {
-  background-color: hsl(220, 80%, 60%);
-  padding: 2rem;
+  background: linear-gradient(120deg, #3159c9, #557be8);
+  padding: 1.4rem 2rem;
   color: #fff;
   display: flex;
   justify-content: center;
-  margin-bottom: 4rem;
+  margin-bottom: 2.5rem;
   font-size: clamp(1.3rem, 3vw, 2rem);
 }
 
@@ -19,7 +25,7 @@ header {
   justify-content: center;
   align-items: center;
   text-align: center;
-  margin-bottom: 4rem;
+  margin: 0 1rem 2rem;
 }
 
 main {
@@ -35,11 +41,16 @@ main {
   justify-content: center;
   align-items: center;
   text-align: center;
+  gap: 1.5rem;
+  padding: 1.5rem;
+  min-width: 270px;
+  border-radius: 14px;
+  background: #fff;
+  box-shadow: 0 8px 28px rgba(23, 32, 51, 0.08);
 }
 
 .daysInput {
   display: inline-block;
-  margin-bottom: 2rem; 
 }
 
 .sleepInput {
@@ -48,10 +59,25 @@ main {
 
 .schedule-container {
   display: flex;
+  align-items: stretch;
+  padding: 1rem;
+  border-radius: 14px;
+  background: #fff;
+  box-shadow: 0 8px 28px rgba(23, 32, 51, 0.08);
 }
 
 .builder {
   display: flex;
+  align-items: center;
+  gap: 1.25rem;
+  padding: 0 1rem;
+}
+
+input[type="range"] {
+  width: 220px;
+  margin: 0.8rem 0 0.4rem;
+  accent-color: #3159c9;
+  cursor: pointer;
 }
 
 #hours {
@@ -59,17 +85,18 @@ main {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  height: 100%;
+  height: 50vh;
+  color: #667085;
   font-size: 0.75rem;
 }
 
 #schedule {
   height: 50vh;
-  width: 20vw;
-  border: solid 1px;
-  box-shadow: 4px 4px 10px hsl(0, 0%, 70%);
-  background-color: hsl(120, 50%, 60%);
-  margin-left: 2rem;
+  width: clamp(180px, 24vw, 300px);
+  overflow: hidden;
+  border: 1px solid #d7deea;
+  border-radius: 8px;
+  background-color: #67b98a;
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
@@ -77,12 +104,13 @@ main {
 }
 .block {
   flex: 1;
-  background-color: hsl(120, 50%, 60%);
-  border: 1px solid rgba(0, 0, 0, 0.1);
+  min-height: 1px;
+  background-color: #67b98a;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.42);
 }
 
 .block.sleep {
-  background-color: hsl(0, 50%, 60%);
+  background-color: #e78982;
 }
 
 .rationale-title {
@@ -93,13 +121,14 @@ main {
 }
 
 .rationale {
-  margin-left: 3rem;
-  margin-right: 3rem;
+  max-width: 850px;
+  margin: 0 1.5rem;
   line-height: 2rem;
+  color: #475467;
 }
 
 footer {
-  background-color: #272750;
+  background-color: #202b45;
   margin-top: 4rem;
   color: #fff;
   padding: 1.5rem;
@@ -121,26 +150,27 @@ footer {
 
   .schedule-container {
     margin: 0;
-    padding: 0;
-    width: 80vw;
+    width: min(92vw, 420px);
     align-items: center;
+    justify-content: center;
   }
 
   .builder {
     flex-direction: column;
+    width: 100%;
   }
 
   #hours {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    height: 51vh;
-    margin-top: 2rem;
+    height: 50vh;
     
   }
 
   #schedule {
-    width: 70%;
-    margin-top: 2rem;
+    width: 100%;
   }
+
+  .sliders-container { width: min(92vw, 420px); }
 }
